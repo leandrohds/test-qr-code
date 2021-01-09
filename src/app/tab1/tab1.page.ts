@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  _data: any = { id: 123, descricao: 'Pedido 123' };
+
+  constructor(private el: ElementRef<HTMLElement>) { }
+
+  get data() {
+    return JSON.stringify(this._data);
+  }
+
+  get width() {
+    return this.el.nativeElement.offsetWidth ?? 256;
+  }
 
 }
